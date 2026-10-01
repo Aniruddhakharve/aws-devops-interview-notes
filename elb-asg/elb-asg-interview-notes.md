@@ -155,7 +155,7 @@ EC2 ─┼── Backend
 EC2 ─┘
 ```
 
-The load balancer provides a **single point of contact** for clients while distributing traffic to healthy targets. AWS manages the load balancer infrastructure and scales its capacity as traffic changes. :chatgpt-content-reference{index="0"}
+The load balancer provides a **single point of contact** for clients while distributing traffic to healthy targets. AWS manages the load balancer infrastructure and scales its capacity as traffic changes. 
 
 ## Main benefits
 
@@ -194,7 +194,7 @@ Unhealthy
 Stop receiving traffic
 ```
 
-Health checks are configured at the **target group** level for ALB/NLB/GWLB target groups, and ELB routes traffic only to healthy registered targets. :chatgpt-content-reference{index="1"}
+Health checks are configured at the **target group** level for ALB/NLB/GWLB target groups, and ELB routes traffic only to healthy registered targets. 
 
 ---
 
@@ -226,7 +226,7 @@ GWLB
 → Layer 3
 ```
 
-AWS documentation currently describes ALB, NLB, GWLB, and the older Classic Load Balancer as the four ELB types. :chatgpt-content-reference{index="2"}
+AWS documentation currently describes ALB, NLB, GWLB, and the older Classic Load Balancer as the four ELB types.
 
 ---
 
@@ -286,7 +286,7 @@ Target Group
 Target
 ```
 
-AWS documents target groups as the routing unit used by ALB listener rules, with health checks performed for the targets in each target group. :chatgpt-content-reference{index="3"}
+AWS documents target groups as the routing unit used by ALB listener rules, with health checks performed for the targets in each target group.
 
 ---
 
@@ -485,7 +485,7 @@ EC2
 
 It also provides a place to define health checks.
 
-With Auto Scaling, instances launched by the Auto Scaling Group can automatically be registered with the target group. :chatgpt-content-reference{index="4"}
+With Auto Scaling, instances launched by the Auto Scaling Group can automatically be registered with the target group. 
 
 ---
 
@@ -533,7 +533,7 @@ Static IP requirement
 NLB
 ```
 
-AWS describes NLB as a Layer-4 load balancer that routes TCP/UDP traffic and can use a fixed IP for the life of the load balancer. :chatgpt-content-reference{index="5"}
+AWS describes NLB as a Layer-4 load balancer that routes TCP/UDP traffic and can use a fixed IP for the life of the load balancer. 
 
 ---
 
@@ -555,7 +555,7 @@ Target Group
  └── EC2
 ```
 
-An NLB target group can also register private IP targets where supported. :chatgpt-content-reference{index="6"}
+An NLB target group can also register private IP targets where supported.
 
 ---
 
@@ -680,7 +680,7 @@ Examples:
 - Intrusion prevention systems
 - Deep packet inspection appliances
 
-AWS describes GWLB as combining a transparent network gateway with load balancing across virtual appliances. It operates at Layer 3 and uses GENEVE on port 6081 between the GWLB and its appliance targets. :chatgpt-content-reference{index="7"}
+AWS describes GWLB as combining a transparent network gateway with load balancing across virtual appliances. It operates at Layer 3 and uses GENEVE on port 6081 between the GWLB and its appliance targets.
 
 ---
 
@@ -1245,7 +1245,7 @@ EC2 terminated
 Deregistered from Target Group
 ```
 
-AWS documents this integration directly: instances launched by an ASG are automatically registered with the attached target group, and terminated instances are deregistered. :chatgpt-content-reference{index="8"}
+AWS documents this integration directly: instances launched by an ASG are automatically registered with the attached target group, and terminated instances are deregistered.
 
 ---
 
@@ -1274,7 +1274,7 @@ Launch replacement
 Register with Target Group
 ```
 
-With ELB health checks enabled for the ASG, Auto Scaling can replace instances that ELB reports as unhealthy. :chatgpt-content-reference{index="9"}
+With ELB health checks enabled for the ASG, Auto Scaling can replace instances that ELB reports as unhealthy.
 
 ---
 
@@ -1358,7 +1358,7 @@ Horizontal Scaling
 High Availability
 ```
 
-AWS's tutorial recommends using multiple AZs with ELB/ASG architectures to improve fault tolerance. :chatgpt-content-reference{index="10"}
+AWS's tutorial recommends using multiple AZs with ELB/ASG architectures to improve fault tolerance.
 
 ---
 
