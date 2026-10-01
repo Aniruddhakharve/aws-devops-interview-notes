@@ -7,6 +7,92 @@
 
 ---
 
+## 📑 Table of Contents
+
+- [1. High Availability and Scalability](#1-high-availability-and-scalability)
+- [2. Vertical vs Horizontal Scaling](#2-vertical-vs-horizontal-scaling)
+- [3. What is Elastic Load Balancing?](#3-what-is-elastic-load-balancing)
+- [4. ELB Health Checks](#4-elb-health-checks)
+- [5. Types of Elastic Load Balancers](#5-types-of-elastic-load-balancers)
+- [6. ALB — Application Load Balancer](#6-alb--application-load-balancer)
+- [7. ALB Target Groups](#7-alb-target-groups)
+- [8. ALB Routing](#8-alb-routing)
+- [9. ALB Listener and Listener Rules](#9-alb-listener-and-listener-rules)
+- [10. ALB Hands-On Architecture](#10-alb-hands-on-architecture)
+- [11. ELB Security Groups](#11-elb-security-groups)
+- [12. Why Use a Target Group?](#12-why-use-a-target-group)
+- [13. NLB — Network Load Balancer](#13-nlb--network-load-balancer)
+- [14. NLB Static IP Concept](#14-nlb-static-ip-concept)
+- [15. NLB Target Groups](#15-nlb-target-groups)
+- [16. NLB Health Checks](#16-nlb-health-checks)
+- [17. NLB Hands-On Lesson](#17-nlb-hands-on-lesson)
+- [18. ALB vs NLB](#18-alb-vs-nlb)
+- [19. GWLB — Gateway Load Balancer](#19-gwlb--gateway-load-balancer)
+- [20. GWLB Architecture](#20-gwlb-architecture)
+- [21. GWLB Key Concepts](#21-gwlb-key-concepts)
+- [22. Sticky Sessions](#22-sticky-sessions)
+- [23. Why Use Sticky Sessions?](#23-why-use-sticky-sessions)
+- [24. Disadvantage of Sticky Sessions](#24-disadvantage-of-sticky-sessions)
+- [25. Sticky Session Cookies](#25-sticky-session-cookies)
+- [26. Cross-Zone Load Balancing](#26-cross-zone-load-balancing)
+- [27. Cross-Zone Example](#27-cross-zone-example)
+- [28. Important Cross-Zone Exam Concept](#28-important-cross-zone-exam-concept)
+- [29. SSL/TLS Certificates](#29-ssltls-certificates)
+- [30. AWS Certificate Manager — ACM](#30-aws-certificate-manager--acm)
+- [31. SSL/TLS Listener](#31-ssltls-listener)
+- [32. SNI — Server Name Indication](#32-sni--server-name-indication)
+- [33. SNI Simple Flow](#33-sni-simple-flow)
+- [34. Connection Draining / Deregistration Delay](#34-connection-draining--deregistration-delay)
+- [35. Why Deregistration Delay Matters](#35-why-deregistration-delay-matters)
+- [36. Auto Scaling Group — ASG](#36-auto-scaling-group--asg)
+- [37. ASG Minimum, Desired and Maximum Capacity](#37-asg-minimum-desired-and-maximum-capacity)
+- [38. ASG and Load Balancer](#38-asg-and-load-balancer)
+- [39. ASG Can Replace Unhealthy Instances](#39-asg-can-replace-unhealthy-instances)
+- [40. Launch Template](#40-launch-template)
+- [41. ASG Architecture](#41-asg-architecture)
+- [42. ASG and Multi-AZ](#42-asg-and-multi-az)
+- [43. ASG Hands-On Flow](#43-asg-hands-on-flow)
+- [44. ASG Hands-On — Scaling Out](#44-asg-hands-on--scaling-out)
+- [45. ASG Hands-On — Scaling In](#45-asg-hands-on--scaling-in)
+- [46. ASG Scaling Policies](#46-asg-scaling-policies)
+- [47. Target Tracking Scaling](#47-target-tracking-scaling)
+- [48. Target Tracking Example](#48-target-tracking-example)
+- [49. Step Scaling](#49-step-scaling)
+- [50. Simple Scaling](#50-simple-scaling)
+- [51. Scheduled Scaling](#51-scheduled-scaling)
+- [52. Predictive Scaling](#52-predictive-scaling)
+- [53. Common Scaling Metrics](#53-common-scaling-metrics)
+- [54. Scaling Cooldown](#54-scaling-cooldown)
+- [55. Ready-to-Use AMIs and Scaling](#55-ready-to-use-amis-and-scaling)
+- [56. Detailed Monitoring and Scaling](#56-detailed-monitoring-and-scaling)
+- [57. ALB vs NLB vs GWLB — Most Important Table](#57-alb-vs-nlb-vs-gwlb--most-important-table)
+- [58. ELB vs ASG](#58-elb-vs-asg)
+- [59. ELB Does Not Automatically Create EC2 Instances](#59-elb-does-not-automatically-create-ec2-instances)
+- [60. ASG Does Not Replace the Load Balancer](#60-asg-does-not-replace-the-load-balancer)
+- [61. Most Important Architecture to Remember](#61-most-important-architecture-to-remember)
+- [62. Common Confusions](#62-common-confusions)
+- [63. How to Explain High Availability and Scalability in an Interview](#63-how-to-explain-high-availability-and-scalability-in-an-interview)
+- [64. How to Explain ELB in an Interview](#64-how-to-explain-elb-in-an-interview)
+- [65. How to Explain ALB in an Interview](#65-how-to-explain-alb-in-an-interview)
+- [66. How to Explain NLB in an Interview](#66-how-to-explain-nlb-in-an-interview)
+- [67. How to Explain GWLB in an Interview](#67-how-to-explain-gwlb-in-an-interview)
+- [68. How to Explain Sticky Sessions](#68-how-to-explain-sticky-sessions)
+- [69. How to Explain Cross-Zone Load Balancing](#69-how-to-explain-cross-zone-load-balancing)
+- [70. How to Explain TLS Termination](#70-how-to-explain-tls-termination)
+- [71. How to Explain SNI](#71-how-to-explain-sni)
+- [72. How to Explain ASG](#72-how-to-explain-asg)
+- [73. How to Explain Target Tracking](#73-how-to-explain-target-tracking)
+- [74. Scenario-Based Interview Questions](#74-scenario-based-interview-questions)
+- [75. Troubleshooting Load Balancer Targets](#75-troubleshooting-load-balancer-targets)
+- [76. Troubleshooting ASG](#76-troubleshooting-asg)
+- [77. Hands-On Scenarios to Practice](#77-hands-on-scenarios-to-practice)
+- [78. Quick Revision Cheat Sheet](#78-quick-revision-cheat-sheet)
+- [⭐ 30-Second Section Summary](#-30-second-section-summary)
+- [🧠 Golden Memory Map](#-golden-memory-map)
+- [⭐ Most Important Interview Points](#-most-important-interview-points)
+
+---
+
 # 1. High Availability and Scalability
 
 These two concepts are related, but they are **not the same**.
@@ -155,7 +241,7 @@ EC2 ─┼── Backend
 EC2 ─┘
 ```
 
-The load balancer provides a **single point of contact** for clients while distributing traffic to healthy targets. AWS manages the load balancer infrastructure and scales its capacity as traffic changes. 
+The load balancer provides a **single point of contact** for clients while distributing traffic to healthy targets. AWS manages the load balancer infrastructure and scales its capacity as traffic changes.
 
 ## Main benefits
 
@@ -194,7 +280,7 @@ Unhealthy
 Stop receiving traffic
 ```
 
-Health checks are configured at the **target group** level for ALB/NLB/GWLB target groups, and ELB routes traffic only to healthy registered targets. 
+Health checks are configured at the **target group** level for ALB/NLB/GWLB target groups, and ELB routes traffic only to healthy registered targets.
 
 ---
 
@@ -225,8 +311,6 @@ GWLB
 → Network appliances
 → Layer 3
 ```
-
-AWS documentation currently describes ALB, NLB, GWLB, and the older Classic Load Balancer as the four ELB types.
 
 ---
 
@@ -285,8 +369,6 @@ Target Group
    ↓
 Target
 ```
-
-AWS documents target groups as the routing unit used by ALB listener rules, with health checks performed for the targets in each target group.
 
 ---
 
@@ -485,7 +567,7 @@ EC2
 
 It also provides a place to define health checks.
 
-With Auto Scaling, instances launched by the Auto Scaling Group can automatically be registered with the target group. 
+With Auto Scaling, instances launched by the Auto Scaling Group can automatically be registered with the target group.
 
 ---
 
@@ -533,8 +615,6 @@ Static IP requirement
 NLB
 ```
 
-AWS describes NLB as a Layer-4 load balancer that routes TCP/UDP traffic and can use a fixed IP for the life of the load balancer. 
-
 ---
 
 # 15. NLB Target Groups
@@ -554,8 +634,6 @@ Target Group
  ├── EC2
  └── EC2
 ```
-
-An NLB target group can also register private IP targets where supported.
 
 ---
 
@@ -679,8 +757,6 @@ Examples:
 - Intrusion detection systems
 - Intrusion prevention systems
 - Deep packet inspection appliances
-
-AWS describes GWLB as combining a transparent network gateway with load balancing across virtual appliances. It operates at Layer 3 and uses GENEVE on port 6081 between the GWLB and its appliance targets.
 
 ---
 
@@ -1245,8 +1321,6 @@ EC2 terminated
 Deregistered from Target Group
 ```
 
-AWS documents this integration directly: instances launched by an ASG are automatically registered with the attached target group, and terminated instances are deregistered.
-
 ---
 
 # 39. ASG Can Replace Unhealthy Instances
@@ -1273,8 +1347,6 @@ Launch replacement
    ↓
 Register with Target Group
 ```
-
-With ELB health checks enabled for the ASG, Auto Scaling can replace instances that ELB reports as unhealthy.
 
 ---
 
@@ -1317,17 +1389,17 @@ The overall architecture is:
                       v
                    ALB
                       |
-                Target Group
+                      Target Group
                       |
-             -----------------
-             |       |       |
-            EC2     EC2     EC2
-             \       |       /
-              \      |      /
-               \     |     /
+              -----------------
+              |       |       |
+             EC2     EC2     EC2
+              \       |       /
+               \      |      /
+                \     |     /
                   ASG
                    |
-             Scaling Policies
+              Scaling Policies
                    |
               CloudWatch Metrics
 ```
@@ -1357,8 +1429,6 @@ Horizontal Scaling
 +
 High Availability
 ```
-
-AWS's tutorial recommends using multiple AZs with ELB/ASG architectures to improve fault tolerance.
 
 ---
 
@@ -1911,9 +1981,9 @@ ASG EC2 instances
                     Application Load
                        Balancer
                             |
-                       Listener
+                         Listener
                             |
-                    Target Group
+                     Target Group
                             |
              ---------------------------
              |            |            |
@@ -1925,7 +1995,7 @@ ASG EC2 instances
                             |
                      Scaling Policy
                             |
-                       CloudWatch
+                        CloudWatch
 ```
 
 This architecture provides:
