@@ -7,6 +7,85 @@
 
 ---
 
+## 📑 Table of Contents
+
+- [1. Amazon EBS — Elastic Block Store](#1-amazon-ebs--elastic-block-store)
+- [2. EBS Availability Zone Limitation](#2-ebs-availability-zone-limitation)
+- [3. EBS Can Be Detached and Reattached](#3-ebs-can-be-detached-and-reattached)
+- [4. One EC2 Instance Can Have Multiple EBS Volumes](#4-one-ec2-instance-can-have-multiple-ebs-volumes)
+- [5. EBS Delete on Termination](#5-ebs-delete-on-termination)
+- [6. EBS Hands-On](#6-ebs-hands-on)
+- [7. EBS Snapshots](#7-ebs-snapshots)
+- [8. Moving an EBS Volume Across AZs](#8-moving-an-ebs-volume-across-azs)
+- [9. EBS Snapshot and Disaster Recovery](#9-ebs-snapshot-and-disaster-recovery)
+- [10. EBS Snapshot Archive](#10-ebs-snapshot-archive)
+- [11. EBS Snapshot Recycle Bin](#11-ebs-snapshot-recycle-bin)
+- [12. Fast Snapshot Restore](#12-fast-snapshot-restore)
+- [13. AMI — Amazon Machine Image](#13-ami--amazon-machine-image)
+- [14. Why Use a Custom AMI?](#14-why-use-a-custom-ami)
+- [15. AMI Types](#15-ami-types)
+- [16. Creating a Custom AMI](#16-creating-a-custom-ami)
+- [17. AMI vs EBS Snapshot](#17-ami-vs-ebs-snapshot)
+- [18. EC2 Instance Store](#18-ec2-instance-store)
+- [19. Instance Store Performance](#19-instance-store-performance)
+- [20. Instance Store Is Ephemeral](#20-instance-store-is-ephemeral)
+- [21. EBS vs Instance Store](#21-ebs-vs-instance-store)
+- [22. EBS Volume Types](#22-ebs-volume-types)
+- [23. GP2 — General Purpose SSD](#23-gp2--general-purpose-ssd)
+- [24. GP3 — General Purpose SSD](#24-gp3--general-purpose-ssd)
+- [25. io1 / io2 — Provisioned IOPS SSD](#25-io1--io2--provisioned-iops-ssd)
+- [26. io2 Block Express](#26-io2-block-express)
+- [27. st1 — Throughput Optimized HDD](#27-st1--throughput-optimized-hdd)
+- [28. sc1 — Cold HDD](#28-sc1--cold-hdd)
+- [29. EBS Volume Types — Easy Comparison](#29-ebs-volume-types--easy-comparison)
+- [30. How to Choose an EBS Volume](#30-how-to-choose-an-ebs-volume)
+- [31. EBS Multi-Attach](#31-ebs-multi-attach)
+- [32. Multi-Attach Availability Zone Limitation](#32-multi-attach-availability-zone-limitation)
+- [33. Multi-Attach Use Case](#33-multi-attach-use-case)
+- [34. EBS Encryption](#34-ebs-encryption)
+- [35. Why Use EBS Encryption?](#35-why-use-ebs-encryption)
+- [36. Encrypting an Existing Unencrypted EBS Volume](#36-encrypting-an-existing-unencrypted-ebs-volume)
+- [37. Amazon EFS — Elastic File System](#37-amazon-efs--elastic-file-system)
+- [38. EFS and Availability Zones](#38-efs-and-availability-zones)
+- [39. EFS Is Scalable](#39-efs-is-scalable)
+- [40. EFS Use Cases](#40-efs-use-cases)
+- [41. EFS Security](#41-efs-security)
+- [42. EFS Mount Targets](#42-efs-mount-targets)
+- [43. EFS Performance Modes](#43-efs-performance-modes)
+- [44. EFS Throughput Modes](#44-efs-throughput-modes)
+- [45. EFS Storage Classes](#45-efs-storage-classes)
+- [46. EFS Lifecycle Management](#46-efs-lifecycle-management)
+- [47. Regional EFS vs One Zone EFS](#47-regional-efs-vs-one-zone-efs)
+- [48. EFS Encryption](#48-efs-encryption)
+- [49. EFS Linux Compatibility](#49-efs-linux-compatibility)
+- [50. EFS Hands-On](#50-efs-hands-on)
+- [51. EFS Hands-On Example](#51-efs-hands-on-example)
+- [52. EFS Security Group Hands-On Concept](#52-efs-security-group-hands-on-concept)
+- [53. EBS vs EFS — Most Important Comparison](#53-ebs-vs-efs--most-important-comparison)
+- [54. EBS vs EFS — Easy Memory](#54-ebs-vs-efs--easy-memory)
+- [55. EBS vs EFS vs Instance Store](#55-ebs-vs-efs-vs-instance-store)
+- [56. Common Confusions](#56-common-confusions)
+- [57. How to Explain EBS in an Interview](#57-how-to-explain-ebs-in-an-interview)
+- [58. How to Explain EBS Snapshots](#58-how-to-explain-ebs-snapshots)
+- [59. How to Explain AMI](#59-how-to-explain-ami)
+- [60. How to Explain Instance Store](#60-how-to-explain-instance-store)
+- [61. How to Explain EBS Volume Types](#61-how-to-explain-ebs-volume-types)
+- [62. How to Explain Multi-Attach](#62-how-to-explain-multi-attach)
+- [63. How to Explain EBS Encryption](#63-how-to-explain-ebs-encryption)
+- [64. How to Explain EFS](#64-how-to-explain-efs)
+- [65. How to Explain EBS vs EFS](#65-how-to-explain-ebs-vs-efs)
+- [66. Interview Questions — Basic](#66-interview-questions--basic)
+- [67. Interview Questions — Intermediate](#67-interview-questions--intermediate)
+- [68. Scenario-Based Interview Questions](#68-scenario-based-interview-questions)
+- [69. Hands-On Scenarios to Practice](#69-hands-on-scenarios-to-practice)
+- [70. Cost Cleanup After Hands-On](#70-cost-cleanup-after-hands-on)
+- [71. Quick Revision Cheat Sheet](#71-quick-revision-cheat-sheet)
+- [⭐ 30-Second Section Summary](#-30-second-section-summary)
+- [🧠 Golden Memory Trick](#-golden-memory-trick)
+- [🎯 Most Important Interview Points From This Section](#-most-important-interview-points-from-this-section)
+
+---
+
 # 1. Amazon EBS — Elastic Block Store
 
 **Amazon EBS (Elastic Block Store)** provides persistent **block storage** for EC2 instances.
@@ -122,10 +201,10 @@ An EC2 instance can have multiple EBS volumes attached.
 
 ```text
              EC2
-          /       \
-         /         \
-      EBS-1       EBS-2
-      8 GB        20 GB
+           /       \
+          /         \
+       EBS-1       EBS-2
+       8 GB        20 GB
 ```
 
 For example:
@@ -256,8 +335,6 @@ Snapshots are stored independently of the EBS volume.
 # 8. Moving an EBS Volume Across AZs
 
 EBS itself is AZ-specific.
-
-But snapshots allow us to recreate the volume in another AZ.
 
 ```text
 AZ-A
@@ -405,7 +482,7 @@ AMI
  +-- Application setup
        |
        ↓
-   EC2 Instance
+    EC2 Instance
 ```
 
 ---
@@ -921,7 +998,7 @@ The feature is available for supported **io1/io2** volumes.
              EC2-A
                |
                |
-            EBS Volume
+             EBS Volume
                |
                |
              EC2-B
@@ -969,7 +1046,7 @@ Example:
 EC2-A
    \
     \
-   Shared EBS
+    Shared EBS
     /
    /
 EC2-B
@@ -1068,9 +1145,9 @@ Think of EFS as:
 
 ```text
               EFS
-          /     |     \
-         /      |      \
-      EC2-A   EC2-B   EC2-C
+           /     |     \
+          /      |      \
+       EC2-A   EC2-B   EC2-C
 ```
 
 Unlike EBS, EFS is designed for shared file access.
